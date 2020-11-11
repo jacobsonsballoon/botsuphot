@@ -12,6 +12,11 @@ $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 
 
+$json = file_get_contents('http://49.231.247.41/LineBot/line1.php');
+$obj = json_decode($json);
+$fname= $obj[0]->fname;
+
+
 
 if ( sizeof($request_array['events']) > 0 ) {
 
@@ -22,7 +27,7 @@ if ( sizeof($request_array['events']) > 0 ) {
         $text = $event['message']['text'];
         $data = [
             'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => $text ]]
+            'messages' => [['type' => 'text', 'text' => $fname ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply',      $POST_HEADER, $post_body);

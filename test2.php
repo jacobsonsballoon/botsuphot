@@ -11,6 +11,8 @@ session_write_close();   // this is the key
 $html = file_get_contents($url, false, $context);       // <-- line 92  
 echo $html;
 
+echo phpinfo();
+
 
 
 

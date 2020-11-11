@@ -15,7 +15,7 @@ $request_array = json_decode($request, true);   // Decode JSON to Array
 
 $json = file_get_contents('http://49.231.247.41/LineBot/line1.php');
 $obj = json_decode($json);
-$fname= $obj[0]->fname;
+//$fname= $obj[0]->fname;
 
 
 
@@ -26,6 +26,7 @@ if ( sizeof($request_array['events']) > 0 ) {
        $reply_message = '';
         $reply_token = $event['replyToken'];
         $text = $event['message']['text'];
+        $fname= $obj[0]->fname;
         $data = [
             'replyToken' => $reply_token,
             'messages' => [['type' => 'text', 'text' => $fname ]]

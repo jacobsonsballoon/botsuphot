@@ -11,7 +11,7 @@ echo "fname1 = ".tis_utf8($fname)."<br/>";
 
 //echo "OK";
 
- echo "fname = ".$fname;
+// echo "fname = ".$fname;
 
 
 

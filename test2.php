@@ -11,7 +11,7 @@ $json = file_get_contents('http://49.231.247.41/LineBot/line1.php');
 
 //echo "OK";
 
- echo "fname = ".$fname;
+ echo "fname1 = ".$fname." === Tกกกก";
 
 
 

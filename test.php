@@ -1,5 +1,6 @@
 <?php
 
+header('Content-Type: charset=utf-8');
 
 $API_URL = 'https://api.line.me/v2/bot/message';
 $ACCESS_TOKEN = 'nCXfhyVz7WOkQbF8tV2bs9SS8DjyBUCjqu+bInq3g7tFcXrQEQZpJ8YfJwNuDhrAffrtu3HmyVe8JCC+Oro6XFb5NnJDpAOzkZTYbNhBhR1umHsYnkHcDjUqJde7n5j6k4L1m93bQgUdWgA7yu+ksgdB04t89/1O/w1cDnyilFU='; 

@@ -2,31 +2,16 @@
 
 //header('Content-Type: charset=utf-8');
 
-//$json = file_get_contents('http://49.231.247.41/LineBot/line1.php');
-    //$obj = json_decode($json);
-    //$fname= $obj[0]->fname;
+$json = file_get_contents('http://49.231.247.41/LineBot/line1.php');
+    $obj = json_decode($json);
+    $fname= $obj[0]->fname;
 
-//echo "fname1 = ".tis_utf8($fname)."<br/>";
+echo "fname1 = ".tis_utf8($fname)."<br/>";
 
 
 //echo "OK";
 
-// echo "fname = ".$fname;
-
-
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "http://49.231.247.41/LineBot/line1.php"); 
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-$temp = trim(curl_exec($ch));
-curl_close($ch);
-
-//echo $temp;
-$obj = json_decode($temp);
-$fname= $obj[0]->fname;
-echo "fname1 = ".($fname);
-
-
-
+ echo "fname = ".$fname;
 
 
 

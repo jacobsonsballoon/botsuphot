@@ -32,11 +32,19 @@ if ( sizeof($request_array['events']) > 0 ) {
 	
 	//$fname=tis_utf8(getDataICT());.
 	$fname=tis_utf8(getDataICT($text));
-	    
-        $data = [
-            'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => $fname ]]
-        ];
+	 
+        if($text == "ICT"){
+            $data = [
+                'replyToken' => $reply_token,
+                'messages' => [['type' => 'text', 'text' => 'ระบุรหัส Computer (Computer ID)' ]]
+            ];
+        }else{
+            $data = [
+                'replyToken' => $reply_token,
+                'messages' => [['type' => 'text', 'text' => $fname ]]
+            ];
+        }
+	
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply',      $POST_HEADER, $post_body);
 

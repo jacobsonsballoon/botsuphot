@@ -12,25 +12,7 @@ $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 
 
-$response = httpPost("http://49.231.247.45:5001/repair/getComByComCode",
-	array("id"=>"1")
-);
 
-$obj = json_decode($response,true);
-$acount= count($obj);
-$ii=0;
-foreach($obj['data'] as $pss_json)
-{
-    //$obj2 = json_decode($pss_json,true);
-    foreach($pss_json[0] as $pss_json2){
-        $aData=$pss_json2['serial'];//iconv('TIS-620', 'UTF-8', $pss_json2['serial']);
-        //echo utf8_tis($aData);
-        $fname=utf8_tis($aData);
-        //exit; 
-    }
-
-    
-}
 
 
 //$data = [
@@ -47,7 +29,7 @@ foreach($obj['data'] as $pss_json)
        // echo "Result: ".$send_result."\r\n";
 
 
-
+$fname=getDataICT();
 
 
 if ( sizeof($request_array['events']) > 0 ) {
@@ -70,7 +52,7 @@ if ( sizeof($request_array['events']) > 0 ) {
         $text = $event['message']['text'];
         $data = [
             'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => $text ]]
+            'messages' => [['type' => 'text', 'text' => $fname ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply',      $POST_HEADER, $post_body);
@@ -147,5 +129,36 @@ function utf8_tis($string)
     }
     return $res;
 }
+
+
+function getDataICT(){
+    $response = httpPost("http://49.231.247.45:5001/repair/getComByComCode",
+	array("id"=>"1")
+    );
+    //echo "response == ".$response;
+    $obj = json_decode($response,true);
+
+    $ii=0;
+    foreach($obj['data'] as $pss_json)
+    {   
+            $ii++;
+        //$obj2 = json_decode($pss_json,true);
+        foreach($pss_json[0] as $pss_json2){
+            $aData=$pss_json2['serial'];//iconv('TIS-620', 'UTF-8', $pss_json2['serial']);
+            //echo 's='.$ii.'* ==' .$pss_json2['serial']."<br/>"; 
+            $fname =  utf8_tis($aData);
+            return $fname;
+            //echo "f==".utf8_tis($aData)."<br/>";
+            exit; 
+            //break;
+        }
+        //$ii++;
+        //echo 's='.$ii.'* ==' .$pss_json[0]->ict_number."<br/>"; 
+        //exit; 
+        //echo $ii."<br/>";
+
+        
+    }
+} // end function
 
 ?>

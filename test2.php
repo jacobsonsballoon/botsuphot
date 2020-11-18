@@ -26,7 +26,7 @@ foreach($obj['data'] as $pss_json)
         $aData=$pss_json2['serial'];//iconv('TIS-620', 'UTF-8', $pss_json2['serial']);
         //echo utf8_tis($aData);
         $fname=utf8_tis($aData);
-        exit; 
+        //exit; 
     }
 
     

@@ -30,7 +30,8 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_token = $event['replyToken'];
         $text = $event['message']['text'];
 	
-	$fname=tis_utf8(getDataICT());
+	//$fname=tis_utf8(getDataICT());.
+	$fname=tis_utf8(getDataICT($text));
 	    
         $data = [
             'replyToken' => $reply_token,
@@ -115,9 +116,9 @@ function utf8_tis($string)
 }
 
 
-function getDataICT(){
+function getDataICT($comid){
     $response = httpPost("http://49.231.247.45:5001/repair/getComByComCode",
-	array("id"=>"1")
+	array("id"=>"$comid")
     );
     //echo "response == ".$response;
     $obj = json_decode($response,true);

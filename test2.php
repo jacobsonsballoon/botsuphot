@@ -11,7 +11,7 @@ $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 
-$fname=tis_utf8(getDataICT());
+//$fname=tis_utf8(getDataICT());
 
 if ( sizeof($request_array['events']) > 0 ) {
 
@@ -30,6 +30,7 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_token = $event['replyToken'];
         $text = $event['message']['text'];
 	
+	$fname=tis_utf8(getDataICT());
 	    
         $data = [
             'replyToken' => $reply_token,

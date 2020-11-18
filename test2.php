@@ -35,7 +35,7 @@ foreach($obj['data'] as $pss_json)
 
 $data = [
     'replyToken' => $reply_token,
-    'messages' => [['type' => 'text', 'text' => $fname ]]
+    'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]
 ];
 
 

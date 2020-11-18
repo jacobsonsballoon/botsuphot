@@ -36,7 +36,7 @@ if ( sizeof($request_array['events']) > 0 ) {
         if($text == "ICT"){
             $data = [
                 'replyToken' => $reply_token,
-                'messages' => [['type' => 'text', 'text' => 'ระบุรหัส Computer (Computer ID)' ]]
+                'messages' => [['type' => 'text', 'text' => 'ระบุเลขที่ ใบขอข้อมูล เช่น 1452 ' ]]
             ];
         }else{
             $data = [

@@ -11,35 +11,12 @@ $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 
-
-
-
-
-//$data = [
-    //'replyToken' => $reply_token,
-   // 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]
-//];
-
-
-//$post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-      //  $send_result = send_reply_message($API_URL.'/reply',      $POST_HEADER, $post_body);
-//echo $data;
-
-
-       // echo "Result: ".$send_result."\r\n";
-
-
-$fname=getDataICT();
-
-
 if ( sizeof($request_array['events']) > 0 ) {
 
     foreach ($request_array['events'] as $event) {
 
         // $reply_message = '';
         // $reply_token = $event['replyToken'];
-
-
         // $data = [
         //     'replyToken' => $reply_token,
         //     'messages' => [['type' => 'text', 'text' => json_encode($request_array)]]
@@ -50,6 +27,8 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
         $text = $event['message']['text'];
+	$fname=getDataICT();
+	    
         $data = [
             'replyToken' => $reply_token,
             'messages' => [['type' => 'text', 'text' => $fname ]]
@@ -142,20 +121,16 @@ function getDataICT(){
     foreach($obj['data'] as $pss_json)
     {   
             $ii++;
-        //$obj2 = json_decode($pss_json,true);
+ 
         foreach($pss_json[0] as $pss_json2){
             $aData=$pss_json2['serial'];//iconv('TIS-620', 'UTF-8', $pss_json2['serial']);
-            //echo 's='.$ii.'* ==' .$pss_json2['serial']."<br/>"; 
+
             $fname =  utf8_tis($aData);
             return $fname;
             //echo "f==".utf8_tis($aData)."<br/>";
             exit; 
-            //break;
+
         }
-        //$ii++;
-        //echo 's='.$ii.'* ==' .$pss_json[0]->ict_number."<br/>"; 
-        //exit; 
-        //echo $ii."<br/>";
 
         
     }

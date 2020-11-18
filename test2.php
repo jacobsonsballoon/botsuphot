@@ -11,6 +11,8 @@ $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 
+$fname=getDataICT();
+
 if ( sizeof($request_array['events']) > 0 ) {
 
     foreach ($request_array['events'] as $event) {
@@ -27,7 +29,7 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
         $text = $event['message']['text'];
-	$fname=getDataICT();
+	
 	    
         $data = [
             'replyToken' => $reply_token,
@@ -38,10 +40,12 @@ if ( sizeof($request_array['events']) > 0 ) {
 
 
 
-        //echo "Result: ".$send_result."\r\n";
-        echo "Result: ".$fname."\r\n";
+        echo "Result: ".$send_result."\r\n";
+        //echo "Result: ".$fname."\r\n";
     }
 }
+
+echo "Result: ".$fname."\r\n";
 
 echo "OK";
 

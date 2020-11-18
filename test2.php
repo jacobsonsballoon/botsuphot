@@ -45,7 +45,7 @@ if ( sizeof($request_array['events']) > 0 ) {
     }
 }
 
-echo "Result: ".$fname."\r\n";
+//echo "Result: ".$fname."\r\n";
 
 echo "OK";
 
